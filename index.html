@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+  <title>Quran Reader</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="phone">
+
+    <!-- ========== READER SCREEN ========== -->
+    <section id="reader" class="screen active">
+      <header class="reader-header">
+        <button class="btn-play" id="btn-play" title="Play">▶</button>
+        <div class="title-area">
+          <div class="surah-label">سورة</div>
+          <div class="surah-name" id="surah-name">الفاتحة</div>
+        </div>
+        <button class="btn-menu" id="btn-menu" title="Surahs">☰</button>
+        <button class="btn-settings" id="btn-open-settings" title="Settings">⚙</button>
+      </header>
+
+      <div class="zoom-bar">
+        <button type="button" id="zoom-out" title="Smaller">−</button>
+        <span id="zoom-val">100%</span>
+        <button type="button" id="zoom-in" title="Larger">+</button>
+        <button type="button" id="btn-mode-toggle" title="Reading Mode" style="width:auto;padding:0 10px;border-radius:18px;font-size:0.95rem">☰ فقرات</button>
+        <button type="button" id="btn-bookmark-toggle" title="Bookmark" style="width:auto;padding:0 10px;border-radius:18px;font-size:0.95rem">☆ Bookmark</button>
+      </div>
+
+      <main class="reader-body" id="reader-body">
+        <!-- Quran text injected by JS -->
+      </main>
+    </section>
+
+    <!-- ========== SURAH LIST ========== -->
+    <section id="surah-list-screen" class="screen">
+      <div class="settings-header">
+        <h1>السور</h1>
+        <button class="btn-back" id="btn-close-surahs">✕ Back</button>
+      </div>
+      <div class="surah-list" id="surah-list"></div>
+    </section>
+
+    <!-- ========== SETTINGS SCREEN ========== -->
+    <section id="settings" class="screen">
+      <div class="settings-header">
+        <h1>SETTINGS DISPLAY</h1>
+        <button class="btn-back" id="btn-close-settings">✕ Back</button>
+      </div>
+
+      <div class="settings-body">
+        <div class="setting-block">
+          <label>VOICE CONTROL</label>
+          <div class="slider-row">
+            <span class="dot">●</span>
+            <input type="range" min="0" max="100" value="80" id="vol">
+            <span class="val" id="vol-val">80</span>
+          </div>
+        </div>
+
+        <div class="setting-block">
+          <label>VOICE SPEED</label>
+          <div class="slider-row">
+            <span class="dot">○</span>
+            <input type="range" min="0.5" max="2.5" step="0.1" value="1" id="spd">
+            <span class="val" id="spd-val">1.0</span>
+          </div>
+          <div class="speed-marks">
+            <span>1.5</span><span>2</span><span>2.5</span>
+          </div>
+        </div>
+
+        <div class="setting-block">
+          <label>VOICE SELECTION</label>
+          <div class="select-row">
+            <select id="voice">
+              <option value="Alafasy_128kbps">Mishary Alafasy</option>
+              <option value="Abdurrahmaan_As-Sudais_192kbps">Abdul Rahman Al-Sudais</option>
+              <option value="Husary_128kbps">Mahmoud Al-Husary</option>
+              <option value="Maher_AlMuaiqly_64kbps">Maher Al-Muaiqly</option>
+              <option value="Minshawy_Murattal_128kbps">Minshawi</option>
+              <option value="Ghamadi_40kbps">Saad Al-Ghamdi</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="setting-block">
+          <button class="full-btn" type="button" id="btn-bookmarks">BOOK MARK LIST ▸</button>
+        </div>
+
+        <div class="setting-block">
+          <label>FONTS SELECT</label>
+          <div class="select-row">
+            <select id="font">
+              <option value="IndoPak">IndoPak Nastaleeq</option>
+              <option value="Amiri">Amiri</option>
+              <option value="Scheherazade New">Scheherazade</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="setting-block">
+          <label>DOWNLOAD FOR OFFLINE</label>
+          <button class="full-btn" type="button" id="btn-download-current">Download Current Surah ▸</button>
+          <button class="full-btn" type="button" id="btn-download-all" style="margin-top:8px">Download All 114 Surahs ▸</button>
+          <p id="dl-status" style="font-size:0.95rem;margin-top:8px;color:#555;font-weight:600"></p>
+        </div>
+
+        <div class="setting-block">
+          <label>IMPORT VOICE</label>
+          <div class="select-row">
+            <input type="file" accept="audio/*" id="import-voice">
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <audio id="audio" preload="none"></audio>
+  <script src="app.js"></script>
+</body>
+</html>
+
